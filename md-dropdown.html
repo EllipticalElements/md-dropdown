@@ -62,7 +62,11 @@
     </style>    
 </dom-module>
 <script>
-    Elliptical.registerElement('menu-item');
+     try{
+        Elliptical.registerElement('menu-item');
+    }catch(ex){
+
+    }
     
     Polymer({
 
@@ -96,7 +100,7 @@
         },
 
         ready:function(){
-            this._listen();
+            this._eventListener();
         },
         
         detached:function(){
@@ -104,21 +108,19 @@
             $(document).off(click, '[md-dropdown]', this._handler.bind(this));
         },
         
-        _listen:function(){
-            //var deviceClick = ('ontouchend' in document) ? 'touchstart.md' : 'click.md';
+        _eventListener:function(){
             var click=($.device.touch) ? 'touchstart.md' : 'click.md';
             $(document).on(click, '[md-dropdown]', this._handler.bind(this));
         },
         
         _handler:function(event){
-             var target = $(event.currentTarget);
-             var dropdown = target.find('md-dropdown');
-             if (!dropdown.hasClass('show')) this.show();
+             if (!this.opened) this.show();
              else this.hide();
         },
         
         _onHide:function(){
            if(!this.opened){
+               this.opened=false;
                this.classList.remove('show');
            } 
         },
@@ -130,8 +132,7 @@
         },
         
         hide:function(){
-            this.opened=true;
-           
+            this.opened=false;
             this.playAnimation('hide');
         }
     });
