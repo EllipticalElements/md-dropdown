@@ -105,12 +105,14 @@
         
         detached:function(){
             var click=($.device.touch) ? 'touchstart.md' : 'click.md';
-            $(document).off(click, '[md-dropdown]', this._handler.bind(this));
+            var parent=$(this).parents('[md-dropdown]');
+            parent.off(click, this._handler.bind(this));
         },
         
         _eventListener:function(){
             var click=($.device.touch) ? 'touchstart.md' : 'click.md';
-            $(document).on(click, '[md-dropdown]', this._handler.bind(this));
+            var parent=$(this).parents('[md-dropdown]');
+            parent.on(click, this._handler.bind(this));
         },
         
         _handler:function(event){
