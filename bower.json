@@ -1,6 +1,6 @@
 {
   "name": "md-dropdown",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "authors": [
     "S. Francis"
   ],
@@ -42,7 +42,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
     "elliptical-polymer-behaviors": "~1.1.0",
-    "neon-animation": "PolymerElements/neon-animation#~1.0.9"
+    "neon-animation": "PolymerElements/neon-animation#~1.2.2"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
